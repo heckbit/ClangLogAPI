@@ -1,0 +1,6 @@
+@ClangLogAPI_HostAddress = http://localhost:5159
+
+GET {{ClangLogAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
