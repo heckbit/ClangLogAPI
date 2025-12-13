@@ -13,7 +13,7 @@ namespace ClangLogAPI.Models
         public int UserId { get; set; }
 
         [ForeignKey("UserId")]
-        public virtual User User { get; set; }
+        public virtual User? User { get; set; }
 
         public DateTime StartTime { get; set; }
 
