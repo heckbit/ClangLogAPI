@@ -39,7 +39,7 @@ namespace ClangLogAPI.Controllers
         {
             var workout = await _context.Workouts.FindAsync(id);
 
-            if(workout == null)
+            if (workout == null)
             {
                 return NotFound();
             }
@@ -79,5 +79,54 @@ namespace ClangLogAPI.Controllers
 
             return CreatedAtAction(nameof(GetWorkout), new { id = workout.Id }, newWorkoutDto);
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateWorkout(int id, UpdateWorkoutDto updateWorkoutDto)
+        {
+            var workout = await _context.Workouts.FindAsync(id);
+
+            if (workout == null)
+            {
+                return NotFound();
+            }
+
+            workout.EndTime = updateWorkoutDto.EndTime;
+            workout.CaloriesBurned = updateWorkoutDto.CaloriesBurned;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!_context.Workouts.Any(e => e.Id == id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteWorkout(int id)
+        {
+            var workout = await _context.Workouts.FindAsync(id);
+
+            if (workout == null)
+            {
+                return NotFound();
+            }
+
+            _context.Workouts.Remove(workout);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
     }
 }
