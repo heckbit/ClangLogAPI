@@ -53,7 +53,27 @@ namespace ClangLogAPI.Controllers
                 CaloriesBurned = workout.CaloriesBurned
             };
 
-            return Ok(workout);
+            return Ok(workoutDto);
+        }
+
+        [HttpGet("user/{userId}")]
+        public async Task<ActionResult<IEnumerable<GetWorkoutDto>>> GetWorkoutsByUser(int userId)
+        {
+            var workouts = await _context.Workouts
+                .Where(w => w.UserId == userId)
+                .OrderByDescending(w => w.StartTime)
+                .ToListAsync();
+
+            var workoutDtos = workouts.Select(w => new GetWorkoutDto
+            {
+                Id = w.Id,
+                UserId = w.UserId,
+                StartTime = w.StartTime,
+                EndTime = w.EndTime,
+                CaloriesBurned = w.CaloriesBurned
+            }).ToList();
+
+            return Ok(workoutDtos);
         }
 
         [HttpPost]

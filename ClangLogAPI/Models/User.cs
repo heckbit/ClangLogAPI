@@ -9,7 +9,8 @@ namespace ClangLogAPI.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        public required string Username { get; set; }
+        [Required]
+        public string Username { get; set; }
 
         public string? Email { get; set; }
 
