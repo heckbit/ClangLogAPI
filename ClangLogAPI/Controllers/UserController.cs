@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using ClangLogAPI.Data;
 using ClangLogAPI.Models;
-using ClangLogAPI.Dtos;
+using ClangLogAPI.Dtos.User;
 
 namespace ClangLogAPI.Controllers
 {

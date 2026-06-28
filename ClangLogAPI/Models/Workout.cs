@@ -20,5 +20,7 @@ namespace ClangLogAPI.Models
         public DateTime EndTime { get; set; }
 
         public int CaloriesBurned { get; set; }
+
+        public ICollection<WorkoutExercise> WorkoutExercises { get; set; } = new List<WorkoutExercise>();
     }
 }

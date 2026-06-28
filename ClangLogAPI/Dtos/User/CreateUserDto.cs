@@ -1,6 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
-namespace ClangLogAPI.Dtos
+namespace ClangLogAPI.Dtos.User
 {
     public class CreateUserDto
     {

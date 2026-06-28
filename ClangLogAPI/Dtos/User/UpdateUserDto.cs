@@ -1,4 +1,4 @@
-﻿namespace ClangLogAPI.Dtos
+namespace ClangLogAPI.Dtos.User
 {
     public class UpdateUserDto
     {

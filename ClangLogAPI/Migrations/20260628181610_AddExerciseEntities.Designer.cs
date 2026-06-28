@@ -3,6 +3,7 @@ using System;
 using ClangLogAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ClangLogAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260628181610_AddExerciseEntities")]
+    partial class AddExerciseEntities
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,92 +46,6 @@ namespace ClangLogAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Exercises");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Description = "Barbell press from a flat bench",
-                            MuscleGroup = "Chest",
-                            Name = "Bench Press"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Description = "Barbell press from an inclined bench",
-                            MuscleGroup = "Chest",
-                            Name = "Incline Bench Press"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Description = "Barbell back squat",
-                            MuscleGroup = "Legs",
-                            Name = "Squat"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Description = "Machine leg press",
-                            MuscleGroup = "Legs",
-                            Name = "Leg Press"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Description = "Conventional barbell deadlift",
-                            MuscleGroup = "Back",
-                            Name = "Deadlift"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Description = "Bent-over barbell row",
-                            MuscleGroup = "Back",
-                            Name = "Barbell Row"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Description = "Bodyweight pull up",
-                            MuscleGroup = "Back",
-                            Name = "Pull Up"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Description = "Standing barbell overhead press",
-                            MuscleGroup = "Shoulders",
-                            Name = "Overhead Press"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Description = "Dumbbell or barbell bicep curl",
-                            MuscleGroup = "Arms",
-                            Name = "Bicep Curl"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Description = "Cable tricep pushdown",
-                            MuscleGroup = "Arms",
-                            Name = "Tricep Pushdown"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            Description = "Isometric core hold",
-                            MuscleGroup = "Core",
-                            Name = "Plank"
-                        },
-                        new
-                        {
-                            Id = 12,
-                            Description = "Bodyweight or weighted lunges",
-                            MuscleGroup = "Legs",
-                            Name = "Lunges"
-                        });
                 });
 
             modelBuilder.Entity("ClangLogAPI.Models.ExerciseSet", b =>

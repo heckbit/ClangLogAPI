@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using ClangLogAPI.Data;
 using ClangLogAPI.Models;
-using ClangLogAPI.Dtos;
+using ClangLogAPI.Dtos.Workout;
 
 namespace ClangLogAPI.Controllers
 {
@@ -110,8 +110,8 @@ namespace ClangLogAPI.Controllers
                 return NotFound();
             }
 
-            workout.EndTime = updateWorkoutDto.EndTime;
-            workout.CaloriesBurned = updateWorkoutDto.CaloriesBurned;
+            workout.EndTime = updateWorkoutDto.EndTime ?? workout.EndTime;
+            workout.CaloriesBurned = updateWorkoutDto.CaloriesBurned ?? workout.CaloriesBurned;
 
             try
             {
